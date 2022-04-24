@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/app_colors.dart';
 
 import 'shared_widgets/separated_row.dart';
@@ -32,19 +31,18 @@ class _NavBarState extends State<NavBar> {
         child: SizedBox(
           width: MediaQuery.of(context).size.width / 2.0,
           child: Row(
-            children: [
+            children: const [
               Text(
                 'Vladyslav',
-                style: GoogleFonts.poppins(
-                  textStyle: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.secondary,
-                  ),
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.secondary,
                 ),
               ),
-              const Spacer(),
-              const SeparatedRow(
+              Spacer(),
+              SeparatedRow(
                 separator: SizedBox(width: 48.0),
                 children: [
                   _NavBarTab(label: 'Home'),
@@ -108,12 +106,11 @@ class _NavBarTabState extends State<_NavBarTab> {
       },
       child: Text(
         widget.label,
-        style: GoogleFonts.poppins(
-          textStyle: const TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.w600,
-            color: AppColors.secondary,
-          ),
+        style: const TextStyle(
+          fontSize: 16.0,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w600,
+          color: AppColors.secondary,
         ),
       ),
     );
