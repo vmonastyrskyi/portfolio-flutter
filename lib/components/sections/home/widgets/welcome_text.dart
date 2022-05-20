@@ -17,7 +17,7 @@ class WelcomeText extends StatelessWidget {
         ),
         children: <TextSpan>[
           TextSpan(
-            text: 'Test',
+            text: '{Name}',
             style: TextStyle(
               color: AppColors.primary,
             ),

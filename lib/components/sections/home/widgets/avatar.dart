@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
+import 'package:portfolio/app_resources.dart';
 
 class Avatar extends StatelessWidget {
   const Avatar({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class Avatar extends StatelessWidget {
         width: 450.0,
         height: 450.0,
         color: AppColors.primary,
-        child: Image.asset('assets/images/perfil.png'),
+        child: Image.asset(AppResources.home),
       ),
     );
   }
