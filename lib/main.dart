@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'components/home_page.dart';
+import 'resources_preloader.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await preloadResources();
+
   runApp(const PortfolioApp());
 }
 
