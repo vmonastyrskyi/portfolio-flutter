@@ -3,7 +3,7 @@ import 'package:portfolio/app_colors.dart';
 
 class CustomIconButton extends StatefulWidget {
   const CustomIconButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.icon,
     required this.width,
@@ -11,7 +11,7 @@ class CustomIconButton extends StatefulWidget {
     this.iconSize = 21.0,
     this.color = AppColors.secondary,
     this.hoverColor = AppColors.primary,
-  }) : super(key: key);
+  });
 
   final VoidCallback onPressed;
   final IconData icon;
@@ -22,10 +22,10 @@ class CustomIconButton extends StatefulWidget {
   final Color hoverColor;
 
   @override
-  _CustomIconButtonState createState() => _CustomIconButtonState();
+  CustomIconButtonState createState() => CustomIconButtonState();
 }
 
-class _CustomIconButtonState extends State<CustomIconButton> {
+class CustomIconButtonState extends State<CustomIconButton> {
   bool _hovered = false;
 
   @override

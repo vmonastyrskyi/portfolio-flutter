@@ -6,7 +6,7 @@ import 'shared_widgets/separated_row.dart';
 const double navBarHeight = 72.0;
 
 class NavBar extends StatefulWidget {
-  const NavBar({Key? key}) : super(key: key);
+  const NavBar({super.key});
 
   @override
   NavBarState createState() => NavBarState();
@@ -29,7 +29,7 @@ class NavBarState extends State<NavBar> {
       ),
       child: Center(
         child: SizedBox(
-          width: MediaQuery.of(context).size.width / 2.0,
+          width: MediaQuery.of(context).size.width / 1.25,
           child: Row(
             children: const [
               Text(

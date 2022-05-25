@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/components/shared_widgets/custom_button.dart';
 
 class ContactButton extends StatelessWidget {
-  const ContactButton({Key? key}) : super(key: key);
+  const ContactButton({super.key});
 
   @override
   Widget build(BuildContext context) {

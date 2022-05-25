@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
 
 class TitleText extends StatelessWidget {
-  const TitleText({Key? key}) : super(key: key);
+  const TitleText({super.key});
 
   @override
   Widget build(BuildContext context) {

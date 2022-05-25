@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
 
 class AboutText extends StatelessWidget {
-  const AboutText({Key? key}) : super(key: key);
+  const AboutText({super.key});
 
   @override
   Widget build(BuildContext context) {
