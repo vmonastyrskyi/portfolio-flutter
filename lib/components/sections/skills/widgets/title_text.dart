@@ -10,7 +10,7 @@ class TitleText extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         const Text(
-          'About',
+          'Skills',
           style: TextStyle(
             fontSize: 32.0,
             fontFamily: 'Poppins',

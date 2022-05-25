@@ -3,7 +3,7 @@ import 'package:portfolio/app_colors.dart';
 import 'package:portfolio/app_resources.dart';
 
 class Avatar extends StatelessWidget {
-  const Avatar({Key? key}) : super(key: key);
+  const Avatar({super.key});
 
   @override
   Widget build(BuildContext context) {

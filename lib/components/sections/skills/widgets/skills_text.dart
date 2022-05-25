@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
 
-class AboutText extends StatelessWidget {
-  const AboutText({super.key});
+class SkillsText extends StatelessWidget {
+  const SkillsText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class AboutText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Text(
-          'I\'am {Name}',
+          'Professional Skills',
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Poppins',
@@ -20,7 +20,7 @@ class AboutText extends StatelessWidget {
         ),
         SizedBox(height: 16.0),
         Text(
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate cum expedita quo culpa tempora, assumenda, quis fugiat ut voluptates soluta, aut earum nemo recusandae cumque perferendis! Recusandae alias accusamus atque.',
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit optio id vero amet, alias architecto consectetur error eum eaque sit.',
           style: TextStyle(
             fontSize: 16.0,
             fontFamily: 'Poppins',

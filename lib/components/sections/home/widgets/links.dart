@@ -4,7 +4,7 @@ import 'package:portfolio/components/shared_widgets/custom_icon_button.dart';
 import 'package:portfolio/components/shared_widgets/separated_row.dart';
 
 class Links extends StatelessWidget {
-  const Links({Key? key}) : super(key: key);
+  const Links({super.key});
 
   @override
   Widget build(BuildContext context) {

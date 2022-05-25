@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SeparatedRow extends StatelessWidget {
   const SeparatedRow({
-    Key? key,
+    super.key,
     required this.separator,
     this.children = const <Widget>[],
     this.mainAxisAlignment = MainAxisAlignment.start,
@@ -14,7 +14,7 @@ class SeparatedRow extends StatelessWidget {
     this.includeOuterSeparators = false,
     this.textDirection,
     this.textBaseline,
-  }) : super(key: key);
+  });
 
   final Widget separator;
   final List<Widget> children;

@@ -6,7 +6,7 @@ import 'widgets/links.dart';
 import 'widgets/welcome_text.dart';
 
 class HomeSection extends StatelessWidget {
-  const HomeSection({Key? key}) : super(key: key);
+  const HomeSection({super.key});
 
   @override
   Widget build(BuildContext context) {

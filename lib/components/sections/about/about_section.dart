@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/about_text.dart';
 import 'widgets/avatar.dart';
 import 'widgets/title_text.dart';
-import 'widgets/about_text.dart';
 
 class AboutSection extends StatelessWidget {
-  const AboutSection({Key? key}) : super(key: key);
+  const AboutSection({super.key});
 
   @override
   Widget build(BuildContext context) {

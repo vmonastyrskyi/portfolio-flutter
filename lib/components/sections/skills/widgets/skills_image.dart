@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app_resources.dart';
 
-class Avatar extends StatelessWidget {
-  const Avatar({super.key});
+class SkillsImage extends StatelessWidget {
+  const SkillsImage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +10,8 @@ class Avatar extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: Image.asset(
-          AppResources.about,
-          width: 300.0,
+          AppResources.skills,
+          height: 330.0,
         ),
       ),
     );
