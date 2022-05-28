@@ -10,7 +10,7 @@ class WelcomeText extends StatelessWidget {
       text: const TextSpan(
         text: 'Hi,\nI\'am ',
         style: TextStyle(
-          fontSize: 56.0,
+          fontSize: 48.0,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w700,
           color: AppColors.secondary,

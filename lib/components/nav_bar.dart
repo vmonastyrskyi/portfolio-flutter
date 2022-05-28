@@ -28,8 +28,8 @@ class NavBarState extends State<NavBar> {
         color: Colors.white,
       ),
       child: Center(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width / 1.25,
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1024.0),
           child: Row(
             children: const [
               Text(
