@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
 
-class TitleText extends StatelessWidget {
-  const TitleText({super.key});
+class SectionTitleText extends StatelessWidget {
+  const SectionTitleText({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        const Text(
-          'Skills',
-          style: TextStyle(
+        Text(
+          title,
+          style: const TextStyle(
             fontSize: 32.0,
             fontFamily: 'Poppins',
             fontWeight: FontWeight.w700,

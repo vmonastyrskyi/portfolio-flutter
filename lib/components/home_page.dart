@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -7,7 +5,7 @@ import 'nav_bar.dart';
 import 'sections/about/about_section.dart';
 import 'sections/home/home_section.dart';
 import 'sections/skills/skills_section.dart';
-import 'sections/works/works_section.dart';
+import 'sections/work/work_section.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,7 +14,7 @@ class HomePage extends StatelessWidget {
     HomeSection(),
     AboutSection(),
     SkillsSection(),
-    WorksSection(),
+    WorkSection(),
   ];
 
   @override

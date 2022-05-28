@@ -49,7 +49,6 @@ class NavBarState extends State<NavBar> {
                   _NavBarTab(label: 'About'),
                   _NavBarTab(label: 'Skills'),
                   _NavBarTab(label: 'Work'),
-                  _NavBarTab(label: 'Contact'),
                 ],
               )
             ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/shared_widgets/section_title.dart';
 
 import 'widgets/skills_image.dart';
 import 'widgets/skills_list.dart';
 import 'widgets/skills_text.dart';
-import 'widgets/title_text.dart';
 
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
@@ -18,7 +18,7 @@ class SkillsSection extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const TitleText(),
+              const SectionTitleText(title: 'Skills'),
               const SizedBox(height: 64.0),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

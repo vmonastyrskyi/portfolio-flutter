@@ -6,11 +6,11 @@ class WorksGridView extends StatelessWidget {
   const WorksGridView({super.key});
 
   static const List<_Work> _works = [
-    _Work(title: 'Long Title of Work', url: '', imagePath: AppResources.work1),
-    _Work(title: 'Long Title of Work', url: '', imagePath: AppResources.work2),
-    _Work(title: 'Long Title of Work', url: '', imagePath: AppResources.work3),
-    _Work(title: 'Long Title of Work', url: '', imagePath: AppResources.work4),
-    _Work(title: 'Long Title of Work', url: '', imagePath: AppResources.work5),
+    _Work(title: '', url: '', imagePath: AppResources.work1),
+    _Work(title: '', url: '', imagePath: AppResources.work2),
+    _Work(title: '', url: '', imagePath: AppResources.work3),
+    _Work(title: '', url: '', imagePath: AppResources.work4),
+    _Work(title: '', url: '', imagePath: AppResources.work5),
   ];
 
   @override
@@ -106,6 +106,7 @@ class _WorkGridViewItemState extends State<_WorkGridViewItem>
         ),
         child: Stack(
           alignment: Alignment.center,
+          clipBehavior: Clip.none,
           children: [
             Positioned.fill(
               child: ScaleTransition(
@@ -113,6 +114,7 @@ class _WorkGridViewItemState extends State<_WorkGridViewItem>
                 child: Image.asset(
                   widget.work.imagePath,
                   fit: BoxFit.cover,
+                  isAntiAlias: true,
                 ),
               ),
             ),
@@ -127,7 +129,7 @@ class _WorkGridViewItemState extends State<_WorkGridViewItem>
                   alignment: Alignment.center,
                   color: Colors.black.withOpacity(0.5),
                   child: Text(
-                    widget.work.title,
+                    '{work.title}',
                     style: const TextStyle(
                       fontSize: 24.0,
                       fontFamily: 'Poppins',

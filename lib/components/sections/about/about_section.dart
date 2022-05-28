@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/shared_widgets/section_title.dart';
 
 import 'widgets/about_text.dart';
 import 'widgets/avatar.dart';
-import 'widgets/title_text.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -17,7 +17,7 @@ class AboutSection extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const TitleText(),
+              const SectionTitleText(title: 'About'),
               const SizedBox(height: 64.0),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
