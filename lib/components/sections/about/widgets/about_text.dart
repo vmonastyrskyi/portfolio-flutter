@@ -10,7 +10,7 @@ class AboutText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Text(
-          'I\'am {Name}',
+          'I\'am Vladyslav',
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Poppins',

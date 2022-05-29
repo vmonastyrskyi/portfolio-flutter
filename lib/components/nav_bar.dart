@@ -5,14 +5,14 @@ import 'shared_widgets/separated_row.dart';
 
 const double navBarHeight = 72.0;
 
-class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+class NavBar extends StatelessWidget {
+  const NavBar({
+    super.key,
+    required this.sectionIndexNotifier,
+  });
 
-  @override
-  NavBarState createState() => NavBarState();
-}
+  final ValueNotifier<int> sectionIndexNotifier;
 
-class NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,9 +31,9 @@ class NavBarState extends State<NavBar> {
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1024.0),
           child: Row(
-            children: const [
-              Text(
-                '{Name}',
+            children: [
+              const Text(
+                'Vladyslav',
                 style: TextStyle(
                   fontSize: 16.0,
                   fontFamily: 'Poppins',
@@ -41,38 +41,89 @@ class NavBarState extends State<NavBar> {
                   color: AppColors.secondary,
                 ),
               ),
-              Spacer(),
-              SeparatedRow(
-                separator: SizedBox(width: 48.0),
-                children: [
-                  _NavBarTab(label: 'Home'),
-                  _NavBarTab(label: 'About'),
-                  _NavBarTab(label: 'Skills'),
-                  _NavBarTab(label: 'Work'),
-                ],
-              )
+              const Spacer(),
+              ValueListenableBuilder(
+                valueListenable: sectionIndexNotifier,
+                builder: (_, value, __) {
+                  return SeparatedRow(
+                    separator: const SizedBox(width: 48.0),
+                    children: [
+                      _NavBarTab(
+                        onPressed: () => _navigateToPage(0),
+                        selected: value == 0,
+                        label: 'Home',
+                      ),
+                      _NavBarTab(
+                        onPressed: () => _navigateToPage(1),
+                        selected: value == 1,
+                        label: 'About',
+                      ),
+                      _NavBarTab(
+                        onPressed: () => _navigateToPage(2),
+                        selected: value == 2,
+                        label: 'Skills',
+                      ),
+                      _NavBarTab(
+                        onPressed: () => _navigateToPage(3),
+                        selected: value == 3,
+                        label: 'Work',
+                      ),
+                    ],
+                  );
+                },
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  void _navigateToPage(int pageIndex) {
+    sectionIndexNotifier.value = pageIndex;
+  }
 }
 
 class _NavBarTab extends StatefulWidget {
   const _NavBarTab({
     Key? key,
+    required this.onPressed,
+    required this.selected,
     required this.label,
   }) : super(key: key);
 
+  final VoidCallback onPressed;
+  final bool selected;
   final String label;
 
   @override
   _NavBarTabState createState() => _NavBarTabState();
 }
 
-class _NavBarTabState extends State<_NavBarTab> {
-  bool _hovered = false;
+class _NavBarTabState extends State<_NavBarTab>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+  late final Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 250),
+      vsync: this,
+    )..addListener(() => setState(() {}));
+
+    _scaleAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        curve: Curves.easeInOutCubic,
+        parent: _animationController,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,13 +132,13 @@ class _NavBarTabState extends State<_NavBarTab> {
       clipBehavior: Clip.none,
       children: [
         _buildLabel(),
-        Visibility(
-          visible: _hovered,
-          child: Positioned(
-            top: 32.0,
-            left: 0.0,
-            right: 0.0,
-            height: 2.0,
+        Positioned(
+          top: 32.0,
+          left: 0.0,
+          right: 0.0,
+          height: 2.0,
+          child: Transform.scale(
+            scaleX: !widget.selected ? _scaleAnimation.value : 1.0,
             child: Container(
               color: AppColors.primary,
             ),
@@ -99,9 +150,11 @@ class _NavBarTabState extends State<_NavBarTab> {
 
   Widget _buildLabel() {
     return InkWell(
-      onTap: () {},
+      onTap: widget.onPressed,
       onHover: (hovered) {
-        setState(() => _hovered = hovered);
+        hovered
+            ? _animationController.forward()
+            : _animationController.reverse();
       },
       child: Text(
         widget.label,

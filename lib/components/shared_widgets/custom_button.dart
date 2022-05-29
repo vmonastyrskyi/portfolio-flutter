@@ -20,18 +20,31 @@ class CustomButton extends StatefulWidget {
 }
 
 class CustomButtonState extends State<CustomButton> {
+  bool _hovered = false;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.onPressed,
-      onHover: (hovered) {},
-      child: Container(
+      onHover: (hovered) {
+        setState(() => _hovered = hovered);
+      },
+      child: AnimatedContainer(
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            if (_hovered)
+              const BoxShadow(
+                blurRadius: 24.0,
+                offset: Offset(0.0, 4.0),
+                color: Color.fromRGBO(14, 36, 49, 0.15),
+              ),
+          ],
           color: AppColors.primary,
         ),
+        duration: const Duration(milliseconds: 250),
         child: Center(
           child: Text(
             widget.text,

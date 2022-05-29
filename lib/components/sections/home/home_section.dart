@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 
 import 'widgets/avatar.dart';
 import 'widgets/contact_button.dart';
@@ -11,7 +12,7 @@ class HomeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 96.0, 0.0, 32.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 88.0, 0.0, 32.0),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1024.0),
@@ -22,17 +23,28 @@ class HomeSection extends StatelessWidget {
               Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    WelcomeText(),
-                    SizedBox(height: 40.0),
-                    ContactButton(),
-                    SizedBox(height: 80.0),
-                    Links(),
+                  children: [
+                    DelayedFadeIn(
+                      delay: const Duration(milliseconds: 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          WelcomeText(),
+                          SizedBox(height: 40.0),
+                          ContactButton(),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 80.0),
+                    const Links(),
                   ],
                 ),
               ),
               const SizedBox(width: 96.0),
-              const Avatar(),
+              const DelayedFadeIn(
+                delay: Duration(milliseconds: 0),
+                child: Avatar(),
+              ),
             ],
           ),
         ),

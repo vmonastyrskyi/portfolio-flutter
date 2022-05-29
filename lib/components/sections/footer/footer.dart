@@ -11,6 +11,7 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 32.0),
+      alignment: Alignment.center,
       decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -21,13 +22,7 @@ class Footer extends StatelessWidget {
         ],
         color: AppColors.secondary,
       ),
-      child: Column(
-        children: const [
-          NameText(),
-          SizedBox(height: 32.0),
-          CopyrightText(),
-        ],
-      ),
+      child: const CopyrightText(),
     );
   }
 }

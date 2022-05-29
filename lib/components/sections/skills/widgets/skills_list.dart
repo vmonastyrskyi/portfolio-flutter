@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
 import 'package:portfolio/app_icons.dart';
+import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 import 'package:portfolio/components/shared_widgets/separated_column.dart';
 
 class SkillsList extends StatelessWidget {
@@ -12,20 +13,32 @@ class SkillsList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       separator: SizedBox(height: 32.0),
       children: [
-        _SkillListItem(
-          iconData: AppIcons.github,
-          skillName: 'Flutter',
-          skillProgress: 0.95,
+        DelayedFadeIn(
+          delay: Duration(milliseconds: 0),
+          offset: Offset(0.0, -1.0),
+          child: _SkillListItem(
+            iconData: AppIcons.github,
+            skillName: 'Flutter',
+            skillProgress: 0.95,
+          ),
         ),
-        _SkillListItem(
-          iconData: AppIcons.github,
-          skillName: 'Dart',
-          skillProgress: 0.7,
+        DelayedFadeIn(
+          delay: Duration(milliseconds: 250),
+          offset: Offset(0.0, -1.0),
+          child: _SkillListItem(
+            iconData: AppIcons.github,
+            skillName: 'Dart',
+            skillProgress: 0.7,
+          ),
         ),
-        _SkillListItem(
-          iconData: AppIcons.github,
-          skillName: 'BLoC',
-          skillProgress: 0.85,
+        DelayedFadeIn(
+          delay: Duration(milliseconds: 500),
+          offset: Offset(0.0, -1.0),
+          child: _SkillListItem(
+            iconData: AppIcons.github,
+            skillName: 'BLoC',
+            skillProgress: 0.85,
+          ),
         ),
       ],
     );

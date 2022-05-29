@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
 
   scrollable_positioned_list: ^0.2.3
+  animated_text_kit: ^4.2.1
 
   cupertino_icons: ^1.0.2
 

@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
 
@@ -6,23 +7,47 @@ class WelcomeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: const TextSpan(
-        text: 'Hi,\nI\'am ',
-        style: TextStyle(
-          fontSize: 48.0,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w700,
-          color: AppColors.secondary,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: '{Name}',
-            style: TextStyle(
-              color: AppColors.primary,
+    return FittedBox(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          RichText(
+            text: const TextSpan(
+              text: 'Hi,\nI\'am ',
+              style: TextStyle(
+                fontSize: 48.0,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w700,
+                color: AppColors.secondary,
+              ),
+              children: <TextSpan>[
+                TextSpan(
+                  text: 'Vladyslav',
+                  style: TextStyle(
+                    color: AppColors.primary,
+                  ),
+                ),
+              ],
             ),
           ),
-          TextSpan(text: '\nMobile Developer'),
+          DefaultTextStyle(
+            style: const TextStyle(
+              fontSize: 48.0,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w700,
+              color: AppColors.secondary,
+            ),
+            child: AnimatedTextKit(
+              pause: const Duration(seconds: 3),
+              repeatForever: true,
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  'Flutter Developer',
+                  speed: const Duration(milliseconds: 75),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

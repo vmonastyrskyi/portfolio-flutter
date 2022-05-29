@@ -9,7 +9,7 @@ class WorkSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 56.0, 0.0, 32.0),
+      padding: const EdgeInsets.fromLTRB(0.0, 56.0, 0.0, 88.0),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1024.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 import 'package:portfolio/components/shared_widgets/section_title.dart';
 
 import 'widgets/skills_image.dart';
@@ -26,14 +27,22 @@ class SkillsSection extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: const [
-                        SkillsText(),
+                        DelayedFadeIn(
+                          delay: Duration(milliseconds: 0),
+                          offset: Offset(0.0, -0.5),
+                          child: SkillsText(),
+                        ),
                         SizedBox(height: 32.0),
                         SkillsList(),
                       ],
                     ),
                   ),
                   const SizedBox(width: 32.0),
-                  const SkillsImage(),
+                  const DelayedFadeIn(
+                    delay: Duration(milliseconds: 250),
+                    offset: Offset(0.0, -0.25),
+                    child: SkillsImage(),
+                  ),
                 ],
               ),
             ],

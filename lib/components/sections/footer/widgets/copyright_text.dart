@@ -7,7 +7,7 @@ class CopyrightText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      '{Copyright}',
+      '@ Vladyslav Monastyrskyi. All rights reserved',
       style: TextStyle(
         fontSize: 14.0,
         fontFamily: 'Poppins',

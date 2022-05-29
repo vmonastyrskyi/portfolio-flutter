@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app_colors.dart';
 import 'package:portfolio/app_resources.dart';
+import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 
 class WorksGridView extends StatelessWidget {
   const WorksGridView({super.key});
@@ -23,7 +24,11 @@ class WorksGridView extends StatelessWidget {
         childAspectRatio: 1.5,
       ),
       itemBuilder: (_, index) {
-        return _WorkGridViewItem(work: _works[index]);
+        return DelayedFadeIn(
+          delay: Duration(milliseconds: 250 * index),
+          offset: const Offset(0.0, -0.25),
+          child: _WorkGridViewItem(work: _works[index]),
+        );
       },
       itemCount: _works.length,
       clipBehavior: Clip.none,
