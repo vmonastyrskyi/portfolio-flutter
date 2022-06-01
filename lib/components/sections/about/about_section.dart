@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 import 'package:portfolio/components/shared_widgets/section_title.dart';
 
 import 'widgets/about_text.dart';
@@ -22,8 +23,19 @@ class AboutSection extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                  Expanded(child: Avatar()),
-                  Expanded(child: AboutText()),
+                  Expanded(
+                    child: DelayedFadeIn(
+                      delay: Duration(milliseconds: 0),
+                      child: Avatar(),
+                    ),
+                  ),
+                  Expanded(
+                    child: DelayedFadeIn(
+                      delay: Duration(milliseconds: 250),
+                      offset: Offset(0.0, -0.5),
+                      child: AboutText(),
+                    ),
+                  ),
                 ],
               ),
             ],

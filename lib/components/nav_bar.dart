@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
+import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_strings.dart';
 
 import 'shared_widgets/separated_row.dart';
 
@@ -33,7 +34,7 @@ class NavBar extends StatelessWidget {
           child: Row(
             children: [
               const Text(
-                'Vladyslav',
+                AppStrings.firstName,
                 style: TextStyle(
                   fontSize: 16.0,
                   fontFamily: 'Poppins',

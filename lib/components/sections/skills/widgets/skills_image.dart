@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_resources.dart';
+import 'package:portfolio/utils/app_resources.dart';
 
 class SkillsImage extends StatelessWidget {
   const SkillsImage({super.key});

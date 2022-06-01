@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
+import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_strings.dart';
 
 class CopyrightText extends StatelessWidget {
   const CopyrightText({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class CopyrightText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      '@ Vladyslav Monastyrskyi. All rights reserved',
+      AppStrings.copyright,
       style: TextStyle(
         fontSize: 14.0,
         fontFamily: 'Poppins',

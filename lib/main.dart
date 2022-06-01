@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'components/home_page.dart';
-import 'resources_preloader.dart';
+import 'utils/resources_preloader.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

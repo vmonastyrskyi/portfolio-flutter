@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
+import 'package:portfolio/utils/app_colors.dart';
 
 class SkillsText extends StatelessWidget {
   const SkillsText({super.key});

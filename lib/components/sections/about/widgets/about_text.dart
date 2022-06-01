@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
+import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_strings.dart';
 
 class AboutText extends StatelessWidget {
   const AboutText({super.key});
@@ -10,7 +11,7 @@ class AboutText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Text(
-          'I\'am Vladyslav',
+          'I\'am ${AppStrings.firstName}',
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Poppins',

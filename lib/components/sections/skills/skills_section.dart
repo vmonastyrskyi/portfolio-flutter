@@ -22,7 +22,7 @@ class SkillsSection extends StatelessWidget {
               const SectionTitleText(title: 'Skills'),
               const SizedBox(height: 64.0),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Expanded(
                     child: Column(

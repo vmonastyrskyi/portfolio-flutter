@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
+import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_strings.dart';
 
 class WelcomeText extends StatelessWidget {
   const WelcomeText({super.key});
@@ -22,7 +23,7 @@ class WelcomeText extends StatelessWidget {
               ),
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Vladyslav',
+                  text: AppStrings.firstName,
                   style: TextStyle(
                     color: AppColors.primary,
                   ),
@@ -42,7 +43,7 @@ class WelcomeText extends StatelessWidget {
               repeatForever: true,
               animatedTexts: [
                 TypewriterAnimatedText(
-                  'Flutter Developer',
+                  AppStrings.profession,
                   speed: const Duration(milliseconds: 75),
                 ),
               ],

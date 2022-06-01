@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
-import 'package:portfolio/app_resources.dart';
+import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_resources.dart';
 
 class Avatar extends StatelessWidget {
   const Avatar({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
-import 'package:portfolio/app_resources.dart';
 import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
+import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_resources.dart';
 
 class WorksGridView extends StatelessWidget {
   const WorksGridView({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/app_colors.dart';
+import 'package:portfolio/utils/app_colors.dart';
 
 class CustomButton extends StatefulWidget {
   const CustomButton({
@@ -30,6 +30,7 @@ class CustomButtonState extends State<CustomButton> {
         setState(() => _hovered = hovered);
       },
       child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
@@ -44,7 +45,6 @@ class CustomButtonState extends State<CustomButton> {
           ],
           color: AppColors.primary,
         ),
-        duration: const Duration(milliseconds: 250),
         child: Center(
           child: Text(
             widget.text,
