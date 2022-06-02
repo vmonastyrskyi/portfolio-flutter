@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_strings.dart';
 
 class SkillsText extends StatelessWidget {
   const SkillsText({super.key});
@@ -20,7 +21,7 @@ class SkillsText extends StatelessWidget {
         ),
         SizedBox(height: 16.0),
         Text(
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit optio id vero amet, alias architecto consectetur error eum eaque sit.',
+          AppStrings.skills,
           style: TextStyle(
             fontSize: 16.0,
             fontFamily: 'Poppins',

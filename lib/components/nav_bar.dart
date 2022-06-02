@@ -34,7 +34,7 @@ class NavBar extends StatelessWidget {
           child: Row(
             children: [
               const Text(
-                AppStrings.firstName,
+                AppStrings.name,
                 style: TextStyle(
                   fontSize: 16.0,
                   fontFamily: 'Poppins',

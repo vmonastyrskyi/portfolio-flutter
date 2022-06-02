@@ -23,7 +23,7 @@ class WelcomeText extends StatelessWidget {
               ),
               children: <TextSpan>[
                 TextSpan(
-                  text: AppStrings.firstName,
+                  text: AppStrings.name,
                   style: TextStyle(
                     color: AppColors.primary,
                   ),

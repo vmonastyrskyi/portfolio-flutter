@@ -22,7 +22,7 @@ class SkillsSection extends StatelessWidget {
               const SectionTitleText(title: 'Skills'),
               const SizedBox(height: 64.0),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Column(
@@ -33,16 +33,16 @@ class SkillsSection extends StatelessWidget {
                           child: SkillsText(),
                         ),
                         SizedBox(height: 32.0),
-                        SkillsList(),
+                        DelayedFadeIn(
+                          delay: Duration(milliseconds: 250),
+                          offset: Offset(0.0, -0.25),
+                          child: SkillsImage(),
+                        ),
                       ],
                     ),
                   ),
                   const SizedBox(width: 32.0),
-                  const DelayedFadeIn(
-                    delay: Duration(milliseconds: 250),
-                    offset: Offset(0.0, -0.25),
-                    child: SkillsImage(),
-                  ),
+                  const Expanded(child: SkillsList()),
                 ],
               ),
             ],

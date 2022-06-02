@@ -42,16 +42,120 @@ class SkillsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SeparatedColumn(
-      separator: const SizedBox(height: 32.0),
-      children: _skills.mapIndexed((index, skill) {
-        return DelayedFadeIn(
-          delay: Duration(milliseconds: 250 * index),
-          offset: const Offset(0.0, -1.0),
-          child: _SkillListItem(skill: skill),
-        );
-      }).toList(),
+    return Column(
+      children: [
+        const DelayedFadeIn(
+          delay: Duration(milliseconds: 0),
+          offset: Offset(0.0, -1.0),
+          child: SizedBox(
+            height: 48.0,
+            child: CustomPaint(
+              size: Size(double.infinity, 48.0),
+              painter: _SkillLevelPainter(),
+            ),
+          ),
+        ),
+        const SizedBox(height: 32.0),
+        SeparatedColumn(
+          separator: const SizedBox(height: 32.0),
+          children: _skills.mapIndexed((index, skill) {
+            return DelayedFadeIn(
+              delay: Duration(milliseconds: 250 * (index + 1)),
+              offset: const Offset(0.0, -1.0),
+              child: _SkillListItem(skill: skill),
+            );
+          }).toList(),
+        ),
+      ],
     );
+  }
+}
+
+class _SkillLevelPainter extends CustomPainter {
+  const _SkillLevelPainter();
+
+  static const double _levelLineWidth = 1.5;
+  static const double _levelLineHeight = 24.0;
+  static const double _subLevelLineHeight = 12.0;
+  static const List<String> _levels = [
+    'Beginner',
+    'Elementary',
+    'Intermediate',
+    'Advanced',
+    'Expert',
+  ];
+
+  final TextStyle _textStyle = const TextStyle(
+    fontSize: 13.0,
+    overflow: TextOverflow.fade,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+  );
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final subLevels = _levels.length * (_levels.length - 1) * 2;
+    final gap = (size.width - 1.5) / _levels.length;
+    final subGap = (size.width - 1.5) / subLevels;
+
+    for (int i = 0; i < _levels.length + 1; i++) {
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(
+            gap * i.toDouble(),
+            size.height - _levelLineHeight,
+            _levelLineWidth,
+            _levelLineHeight,
+          ),
+          const Radius.circular(8.0),
+        ),
+        Paint()..color = AppColors.secondary,
+      );
+    }
+
+    for (int i = 1; i < subLevels; i++) {
+      if (i % ((_levels.length - 1) * 2) == 0) continue;
+
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(
+            subGap * i.toDouble(),
+            size.height - _subLevelLineHeight,
+            _levelLineWidth,
+            _subLevelLineHeight,
+          ),
+          const Radius.circular(8.0),
+        ),
+        Paint()..color = AppColors.secondary,
+      );
+    }
+
+    for (int i = 0; i < _levels.length; i++) {
+      final textSpan = TextSpan(
+        text: _levels[i],
+        style: _textStyle,
+      );
+
+      final textPainter = TextPainter(
+        text: textSpan,
+        textDirection: TextDirection.ltr,
+        textAlign: TextAlign.center,
+        maxLines: 1,
+      );
+
+      final offset = Offset(_levelLineWidth + gap * i, 4.0);
+
+      textPainter.layout(
+        minWidth: gap - (_levelLineWidth * 2),
+        maxWidth: gap - (_levelLineWidth * 2),
+      );
+      textPainter.paint(canvas, offset);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
 

@@ -6,13 +6,10 @@ class SkillsImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UnconstrainedBox(
+    return FittedBox(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: Image.asset(
-          AppResources.skills,
-          height: 330.0,
-        ),
+        child: Image.asset(AppResources.skills),
       ),
     );
   }

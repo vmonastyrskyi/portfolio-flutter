@@ -11,7 +11,7 @@ class AboutText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Text(
-          'I\'am ${AppStrings.firstName}',
+          'I\'am ${AppStrings.name}',
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Poppins',
@@ -21,7 +21,7 @@ class AboutText extends StatelessWidget {
         ),
         SizedBox(height: 16.0),
         Text(
-          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate cum expedita quo culpa tempora, assumenda, quis fugiat ut voluptates soluta, aut earum nemo recusandae cumque perferendis! Recusandae alias accusamus atque.',
+          AppStrings.aboutMe,
           style: TextStyle(
             fontSize: 16.0,
             fontFamily: 'Poppins',

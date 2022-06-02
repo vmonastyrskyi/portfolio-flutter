@@ -8,7 +8,7 @@ class NameText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Text(
-      AppStrings.firstName,
+      AppStrings.name,
       style: TextStyle(
         fontSize: 32.0,
         fontFamily: 'Poppins',

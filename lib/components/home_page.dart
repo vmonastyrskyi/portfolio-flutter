@@ -17,9 +17,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const List<Widget> _sections = [
+    SkillsSection(),
     HomeSection(),
     AboutSection(),
-    SkillsSection(),
     WorkSection(),
     Footer(),
   ];
