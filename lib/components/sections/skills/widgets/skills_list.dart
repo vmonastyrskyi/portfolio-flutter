@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 import 'package:portfolio/components/shared_widgets/separated_column.dart';
 import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/app_icons.dart';
 
 class SkillsList extends StatelessWidget {
   const SkillsList({super.key});
@@ -11,17 +12,17 @@ class SkillsList extends StatelessWidget {
     _Skill(
       skillName: 'Flutter',
       skillProgress: 0.85,
-      iconData: Icons.flutter_dash_rounded,
+      iconData: AppIcons.flutter,
     ),
     _Skill(
       skillName: 'Dart',
       skillProgress: 0.8,
-      iconData: Icons.flutter_dash_rounded,
+      iconData: AppIcons.dart,
     ),
     _Skill(
       skillName: 'BLoC',
       skillProgress: 1.0,
-      iconData: Icons.flutter_dash_rounded,
+      iconData: AppIcons.bloc,
     ),
     _Skill(
       skillName: 'Provider',
@@ -31,12 +32,12 @@ class SkillsList extends StatelessWidget {
     _Skill(
       skillName: 'Firebase services',
       skillProgress: 0.65,
-      iconData: Icons.flutter_dash_rounded,
+      iconData: AppIcons.firebase,
     ),
     _Skill(
       skillName: 'Animations',
       skillProgress: 0.85,
-      iconData: Icons.animation_rounded,
+      iconData: Icons.animation,
     ),
   ];
 
@@ -216,6 +217,7 @@ class _SkillListItem extends StatelessWidget {
         Icon(
           skill.iconData,
           color: AppColors.primary,
+          size: 24.0,
         ),
         const SizedBox(width: 16.0),
         Text(
