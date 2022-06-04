@@ -3,7 +3,7 @@ import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_strings.dart';
 
 class CopyrightText extends StatelessWidget {
-  const CopyrightText({Key? key}) : super(key: key);
+  const CopyrightText({super.key});
 
   @override
   Widget build(BuildContext context) {

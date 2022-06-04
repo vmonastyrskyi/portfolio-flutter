@@ -7,4 +7,6 @@ abstract class AppResources {
   static const String work3 = 'assets/images/work3.jpg';
   static const String work4 = 'assets/images/work4.jpg';
   static const String work5 = 'assets/images/work5.jpg';
+
+  static const String emailAPIKey = 'assets/email_api_key.txt';
 }

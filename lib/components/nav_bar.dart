@@ -33,13 +33,16 @@ class NavBar extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 1024.0),
           child: Row(
             children: [
-              const Text(
-                AppStrings.name,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.secondary,
+              InkWell(
+                onTap: () => _navigateToPage(0),
+                child: const Text(
+                  AppStrings.name,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.secondary,
+                  ),
                 ),
               ),
               const Spacer(),
@@ -69,6 +72,11 @@ class NavBar extends StatelessWidget {
                         selected: value == 3,
                         label: 'Work',
                       ),
+                      _NavBarTab(
+                        onPressed: () => _navigateToPage(4),
+                        selected: value == 4,
+                        label: 'Contact',
+                      ),
                     ],
                   );
                 },
@@ -87,11 +95,10 @@ class NavBar extends StatelessWidget {
 
 class _NavBarTab extends StatefulWidget {
   const _NavBarTab({
-    Key? key,
     required this.onPressed,
     required this.selected,
     required this.label,
-  }) : super(key: key);
+  });
 
   final VoidCallback onPressed;
   final bool selected;

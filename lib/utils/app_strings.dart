@@ -11,4 +11,12 @@ abstract class AppStrings {
   static const String email = 'vladyslav.monastyrskyi@gmail.com';
   static const String githubUrl = 'linkedin.com/in/vlad-monastyrskyi';
   static const String linkedinUrl = 'github.com/monastyrskyi';
+
+  static const String emailAPIUrl = 'https://api.sendinblue.com/v3/smtp/email';
+  static const String emailToMail = 'vladyslav.monastyrskyi@gmail.com';
+  static const String emailToName = 'Vladyslav Monastyrskyi';
+
+  static const String sendEmailSuccess = 'Your message has been sent';
+  static const String sendEmailFailure =
+      'Something went wrong.\nPlease contact with me directly - $emailToMail';
 }
