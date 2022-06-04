@@ -3,6 +3,7 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import 'nav_bar.dart';
 import 'sections/about/about_section.dart';
+import 'sections/contact/contact_section.dart';
 import 'sections/footer/footer.dart';
 import 'sections/home/home_section.dart';
 import 'sections/skills/skills_section.dart';
@@ -16,17 +17,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static const List<Widget> _sections = [
-    HomeSection(),
-    AboutSection(),
-    SkillsSection(),
-    WorkSection(),
-    Footer(),
+  final ItemScrollController _itemScrollController = ItemScrollController();
+  final ItemPositionsListener _itemPositionsListener =
+      ItemPositionsListener.create();
+  final ValueNotifier<int> _sectionIndexNotifier = ValueNotifier(0);
+
+  late final List<Widget> _sections = [
+    HomeSection(sectionIndexNotifier: _sectionIndexNotifier),
+    const AboutSection(),
+    const SkillsSection(),
+    const WorkSection(),
+    const ContactSection(),
+    const Footer(),
   ];
 
-  final ItemScrollController _itemScrollController = ItemScrollController();
-
-  final ValueNotifier<int> _sectionIndexNotifier = ValueNotifier(-1);
+  int get trailingIndex {
+    return _itemPositionsListener.itemPositions.value
+        .where((position) => position.itemTrailingEdge > 0)
+        .reduce((min, position) =>
+            position.itemTrailingEdge < min.itemTrailingEdge ? position : min)
+        .index;
+  }
 
   @override
   void initState() {
@@ -51,13 +62,21 @@ class _HomePageState extends State<HomePage> {
       ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (notification) {
-          if (notification is UserScrollNotification) {
-            _sectionIndexNotifier.value = -1;
+          if (notification is ScrollEndNotification) {
+            final metrics = notification.metrics;
+
+            if (metrics.pixels != 0 && metrics.atEdge) {
+              _sectionIndexNotifier.value = _sections.length - 2;
+              return true;
+            }
+
+            _sectionIndexNotifier.value = trailingIndex;
           }
           return true;
         },
         child: ScrollablePositionedList.builder(
           itemScrollController: _itemScrollController,
+          itemPositionsListener: _itemPositionsListener,
           itemBuilder: (_, index) => _sections[index],
           itemCount: _sections.length,
         ),

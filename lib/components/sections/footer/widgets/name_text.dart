@@ -3,7 +3,7 @@ import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_strings.dart';
 
 class NameText extends StatelessWidget {
-  const NameText({Key? key}) : super(key: key);
+  const NameText({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -12,7 +12,7 @@ void main() async {
 }
 
 class PortfolioApp extends StatelessWidget {
-  const PortfolioApp({Key? key}) : super(key: key);
+  const PortfolioApp({super.key});
 
   @override
   Widget build(BuildContext context) {

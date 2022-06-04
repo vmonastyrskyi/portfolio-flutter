@@ -7,7 +7,12 @@ import 'widgets/links.dart';
 import 'widgets/welcome_text.dart';
 
 class HomeSection extends StatelessWidget {
-  const HomeSection({super.key});
+  const HomeSection({
+    super.key,
+    required this.sectionIndexNotifier,
+  });
+
+  final ValueNotifier<int> sectionIndexNotifier;
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +33,14 @@ class HomeSection extends StatelessWidget {
                       delay: const Duration(milliseconds: 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          WelcomeText(),
-                          SizedBox(height: 32.0),
-                          ContactButton(),
+                        children: [
+                          const WelcomeText(),
+                          const SizedBox(height: 32.0),
+                          ContactButton(
+                            onPressed: () {
+                              sectionIndexNotifier.value = 4;
+                            },
+                          ),
                         ],
                       ),
                     ),

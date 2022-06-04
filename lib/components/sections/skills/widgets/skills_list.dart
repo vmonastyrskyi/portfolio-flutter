@@ -75,7 +75,7 @@ class SkillsList extends StatelessWidget {
 class _SkillLevelPainter extends CustomPainter {
   const _SkillLevelPainter();
 
-  static const double _levelLineWidth = 1.5;
+  static const double _levelLineWidth = 2.0;
   static const double _levelLineHeight = 24.0;
   static const double _subLevelLineHeight = 12.0;
   static const List<String> _levels = [
@@ -96,8 +96,8 @@ class _SkillLevelPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final subLevels = _levels.length * (_levels.length - 1) * 2;
-    final gap = (size.width - 1.5) / _levels.length;
-    final subGap = (size.width - 1.5) / subLevels;
+    final gap = (size.width - _levelLineWidth) / _levels.length;
+    final subGap = (size.width - _levelLineWidth) / subLevels;
 
     for (int i = 0; i < _levels.length + 1; i++) {
       canvas.drawRRect(
@@ -115,7 +115,9 @@ class _SkillLevelPainter extends CustomPainter {
     }
 
     for (int i = 1; i < subLevels; i++) {
-      if (i % ((_levels.length - 1) * 2) == 0) continue;
+      if (i % ((_levels.length - 1) * 2) == 0) {
+        continue;
+      }
 
       canvas.drawRRect(
         RRect.fromRectAndRadius(
@@ -144,7 +146,10 @@ class _SkillLevelPainter extends CustomPainter {
         maxLines: 1,
       );
 
-      final offset = Offset(_levelLineWidth + gap * i, 4.0);
+      final offset = Offset(
+        _levelLineWidth + gap * i,
+        _levelLineWidth * 2,
+      );
 
       textPainter.layout(
         minWidth: gap - (_levelLineWidth * 2),
