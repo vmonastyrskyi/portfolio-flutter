@@ -2,21 +2,76 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_resources.dart';
 
-class Avatar extends StatelessWidget {
+class Avatar extends StatefulWidget {
   const Avatar({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: _AvatarClipper(),
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(0.0, 64.0, 0.0, 0.0),
-        width: 450.0,
-        height: 450.0,
-        color: AppColors.primary,
-        child: Image.asset(AppResources.home),
+  State<Avatar> createState() => _AvatarState();
+}
+
+class _AvatarState extends State<Avatar> with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+  late final Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 750),
+      vsync: this,
+    );
+
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 1.125,
+    ).animate(
+      CurvedAnimation(
+        curve: Curves.easeInOutQuad,
+        parent: _animationController,
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      onHover: (hovered) {
+        hovered
+            ? _animationController.forward()
+            : _animationController.reverse();
+      },
+      hoverColor: AppColors.transparent,
+      splashColor: AppColors.transparent,
+      highlightColor: AppColors.transparent,
+      child: ClipPath(
+        clipper: _AvatarClipper(),
+        child: Container(
+          width: 450.0,
+          height: 450.0,
+          color: AppColors.primary,
+          child: ScaleTransition(
+            scale: _scaleAnimation,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset(
+                AppResources.home,
+                fit: BoxFit.cover,
+                isAntiAlias: true,
+                height: 450,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 }
 

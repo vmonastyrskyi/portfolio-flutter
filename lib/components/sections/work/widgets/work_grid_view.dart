@@ -2,16 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_resources.dart';
+import 'package:portfolio/utils/url_launcher.dart';
 
 class WorksGridView extends StatelessWidget {
   const WorksGridView({super.key});
 
   static const List<_Work> _works = [
-    _Work(title: '', url: '', imagePath: AppResources.work1),
-    _Work(title: '', url: '', imagePath: AppResources.work2),
-    _Work(title: '', url: '', imagePath: AppResources.work3),
-    _Work(title: '', url: '', imagePath: AppResources.work4),
-    _Work(title: '', url: '', imagePath: AppResources.work5),
+    _Work(
+      title: 'Elecar',
+      url: 'github.com/monastyrskyi/elecar',
+      imagePath: AppResources.workElecar,
+    ),
+    _Work(
+      title: 'Notes',
+      url: 'github.com/monastyrskyi/notes-flutter-app',
+      imagePath: AppResources.workNotes,
+    ),
+    _Work(
+      title: 'Telegram Clone',
+      url: 'github.com/monastyrskyi/telegram-clone-mobile',
+      imagePath: AppResources.workTelegram,
+    ),
+    _Work(
+      title: 'ASCII Camera',
+      url: 'github.com/monastyrskyi/ascii_camera',
+      imagePath: AppResources.workAscii,
+    ),
   ];
 
   @override
@@ -87,7 +103,7 @@ class _WorkGridViewItemState extends State<_WorkGridViewItem>
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => UrlLauncher.toUrl(widget.work.url),
       onHover: (hovered) {
         hovered
             ? _animationController.forward()
@@ -134,7 +150,7 @@ class _WorkGridViewItemState extends State<_WorkGridViewItem>
                   alignment: Alignment.center,
                   color: Colors.black.withOpacity(0.5),
                   child: Text(
-                    '{work.title}',
+                    widget.work.title,
                     style: const TextStyle(
                       fontSize: 24.0,
                       fontFamily: 'Poppins',
