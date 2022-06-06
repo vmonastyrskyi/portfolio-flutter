@@ -8,10 +8,9 @@ Future<void> preloadResources() async {
     preloadImage(const AssetImage(AppResources.home)),
     preloadImage(const AssetImage(AppResources.about)),
     preloadImage(const AssetImage(AppResources.skills)),
-    preloadImage(const AssetImage(AppResources.work1)),
-    preloadImage(const AssetImage(AppResources.work2)),
-    preloadImage(const AssetImage(AppResources.work3)),
-    preloadImage(const AssetImage(AppResources.work4)),
-    preloadImage(const AssetImage(AppResources.work5)),
+    preloadImage(const AssetImage(AppResources.workAscii)),
+    preloadImage(const AssetImage(AppResources.workTelegram)),
+    preloadImage(const AssetImage(AppResources.workNotes)),
+    preloadImage(const AssetImage(AppResources.workElecar)),
   ]);
 }
