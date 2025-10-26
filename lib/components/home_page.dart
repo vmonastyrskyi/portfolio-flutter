@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/nav_bar.dart';
+import 'package:portfolio/components/sections/about/about_section.dart';
+import 'package:portfolio/components/sections/contact/contact_section.dart';
+import 'package:portfolio/components/sections/footer/footer.dart';
+import 'package:portfolio/components/sections/home/home_section.dart';
+import 'package:portfolio/components/sections/projects/projects_section.dart';
+import 'package:portfolio/components/sections/skills/skills_section.dart';
+import 'package:portfolio/components/theme/app_colors.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-
-import 'nav_bar.dart';
-import 'sections/about/about_section.dart';
-import 'sections/contact/contact_section.dart';
-import 'sections/footer/footer.dart';
-import 'sections/home/home_section.dart';
-import 'sections/skills/skills_section.dart';
-import 'sections/work/work_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,19 +25,11 @@ class _HomePageState extends State<HomePage> {
   late final List<Widget> _sections = [
     HomeSection(sectionIndexNotifier: _sectionIndexNotifier),
     const AboutSection(),
+    const ProjectsSection(),
     const SkillsSection(),
-    const WorkSection(),
     const ContactSection(),
     const Footer(),
   ];
-
-  int get trailingIndex {
-    return _itemPositionsListener.itemPositions.value
-        .where((position) => position.itemTrailingEdge > 0)
-        .reduce((min, position) =>
-            position.itemTrailingEdge < min.itemTrailingEdge ? position : min)
-        .index;
-  }
 
   @override
   void initState() {
@@ -56,30 +48,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.appColors.backgroundColor,
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, navBarHeight),
         child: NavBar(sectionIndexNotifier: _sectionIndexNotifier),
       ),
-      body: NotificationListener<ScrollNotification>(
-        onNotification: (notification) {
-          if (notification is ScrollEndNotification) {
-            final metrics = notification.metrics;
-
-            if (metrics.pixels != 0 && metrics.atEdge) {
-              _sectionIndexNotifier.value = _sections.length - 2;
-              return true;
-            }
-
-            _sectionIndexNotifier.value = trailingIndex;
-          }
-          return true;
-        },
-        child: ScrollablePositionedList.builder(
-          itemScrollController: _itemScrollController,
-          itemPositionsListener: _itemPositionsListener,
-          itemBuilder: (_, index) => _sections[index],
-          itemCount: _sections.length,
-        ),
+      body: ScrollablePositionedList.builder(
+        itemScrollController: _itemScrollController,
+        itemPositionsListener: _itemPositionsListener,
+        itemBuilder: (_, index) => _sections[index],
+        itemCount: _sections.length,
       ),
     );
   }

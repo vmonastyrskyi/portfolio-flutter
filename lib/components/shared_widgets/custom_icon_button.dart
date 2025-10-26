@@ -1,54 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/components/theme/app_colors.dart';
 
-class CustomIconButton extends StatefulWidget {
+class CustomIconButton extends StatelessWidget {
   const CustomIconButton({
     super.key,
     required this.onPressed,
     required this.icon,
-    required this.width,
-    required this.height,
+    required this.size,
+    this.backgroundColor,
+    this.foregroundColor,
     this.iconSize = 21.0,
-    this.color = AppColors.secondary,
-    this.hoverColor = AppColors.primary,
   });
 
   final VoidCallback onPressed;
   final IconData icon;
-  final double width;
-  final double height;
+  final double size;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
   final double iconSize;
-  final Color color;
-  final Color hoverColor;
-
-  @override
-  CustomIconButtonState createState() => CustomIconButtonState();
-}
-
-class CustomIconButtonState extends State<CustomIconButton> {
-  bool _hovered = false;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.onPressed,
-      onHover: (hovered) {
-        setState(() => _hovered = hovered);
-      },
-      hoverColor: AppColors.transparent,
-      splashColor: AppColors.transparent,
-      highlightColor: AppColors.transparent,
-      child: SizedBox(
-        width: widget.width,
-        height: widget.height,
-        child: Center(
-          child: Icon(
-            widget.icon,
-            size: widget.iconSize,
-            color: _hovered ? widget.hoverColor : widget.color,
-          ),
+    return IconButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(
+          backgroundColor ?? context.appColors.primaryColor,
         ),
+        foregroundColor: WidgetStatePropertyAll(
+          foregroundColor ?? context.appColors.primaryTextColor,
+        ),
+        fixedSize: WidgetStatePropertyAll(Size(size, size)),
       ),
+      icon: Icon(icon, size: iconSize),
     );
   }
 }

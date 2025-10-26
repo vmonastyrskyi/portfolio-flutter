@@ -3,14 +3,11 @@ import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 
 import 'widgets/avatar.dart';
 import 'widgets/contact_button.dart';
-import 'widgets/links.dart';
+import 'widgets/social_links.dart';
 import 'widgets/welcome_text.dart';
 
 class HomeSection extends StatelessWidget {
-  const HomeSection({
-    super.key,
-    required this.sectionIndexNotifier,
-  });
+  const HomeSection({super.key, required this.sectionIndexNotifier});
 
   final ValueNotifier<int> sectionIndexNotifier;
 
@@ -24,28 +21,26 @@ class HomeSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.min,
-            children: [
+            children: <Widget>[
               Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     DelayedFadeIn(
                       delay: const Duration(milliseconds: 0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: <Widget>[
                           const WelcomeText(),
                           const SizedBox(height: 32.0),
                           ContactButton(
-                            onPressed: () {
-                              sectionIndexNotifier.value = 4;
-                            },
+                            onPressed: () => sectionIndexNotifier.value = 4,
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 64.0),
-                    const Links(),
+                    const SizedBox(height: 48.0),
+                    const SocialLinks(),
                   ],
                 ),
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/components/theme/app_colors.dart';
 
 class CustomButton extends StatefulWidget {
   const CustomButton({
@@ -35,24 +35,24 @@ class CustomButtonState extends State<CustomButton> {
         height: widget.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
+          boxShadow: <BoxShadow>[
             if (_hovered)
               const BoxShadow(
-                blurRadius: 24.0,
+                color: Color.fromRGBO(14, 36, 49, 0.2),
                 offset: Offset(0.0, 4.0),
-                color: Color.fromRGBO(14, 36, 49, 0.15),
+                blurRadius: 24.0,
               ),
           ],
-          color: AppColors.primary,
+          color: context.appColors.primaryColor,
         ),
         child: Center(
           child: Text(
             widget.text,
             style: const TextStyle(
-              fontSize: 16.0,
-              fontFamily: 'Poppins',
+              color: Colors.white,
               fontWeight: FontWeight.w600,
-              color: AppColors.white,
+              fontFamily: 'Poppins',
+              fontSize: 16.0,
             ),
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/components/theme/app_colors.dart';
 import 'package:portfolio/utils/app_strings.dart';
 
 class CopyrightText extends StatelessWidget {
@@ -7,13 +7,13 @@ class CopyrightText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
+    return Text(
       AppStrings.copyright,
       style: TextStyle(
-        fontSize: 14.0,
+        color: context.appColors.primaryTextColor,
+        fontWeight: FontWeight.w500,
         fontFamily: 'Poppins',
-        fontWeight: FontWeight.w600,
-        color: AppColors.white,
+        fontSize: 14.0,
       ),
     );
   }

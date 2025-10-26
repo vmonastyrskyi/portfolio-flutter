@@ -3,7 +3,6 @@ import 'package:portfolio/components/shared_widgets/delayed_fade_in.dart';
 import 'package:portfolio/components/shared_widgets/section_title.dart';
 
 import 'widgets/about_text.dart';
-import 'widgets/avatar.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -15,28 +14,15 @@ class AboutSection extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1024.0),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SectionTitleText(title: 'About'),
-              const SizedBox(height: 64.0),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  Expanded(
-                    child: DelayedFadeIn(
-                      delay: Duration(milliseconds: 0),
-                      child: Avatar(),
-                    ),
-                  ),
-                  Expanded(
-                    child: DelayedFadeIn(
-                      delay: Duration(milliseconds: 250),
-                      offset: Offset(0.0, -0.5),
-                      child: AboutText(),
-                    ),
-                  ),
-                ],
+            children: <Widget>[
+              SectionTitleText(title: 'About Me'),
+              SizedBox(height: 64.0),
+              DelayedFadeIn(
+                delay: Duration(milliseconds: 250),
+                offset: Offset(0.0, -0.25),
+                child: AboutText(),
               ),
             ],
           ),

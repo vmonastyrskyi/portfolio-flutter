@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:http/http.dart' as http;
 
-import 'app_resources.dart';
 import 'app_strings.dart';
 
 class EmailService {
@@ -12,8 +11,10 @@ class EmailService {
     required String subject,
     required String content,
   }) async {
-    final emailAPIUrl = Uri.parse(AppStrings.emailAPIUrl);
-    final emailAPIKey = await rootBundle.loadString(AppResources.emailAPIKey);
+    final remoteConfig = FirebaseRemoteConfig.instance;
+
+    final emailAPIUrl = Uri.parse('${AppStrings.emailAPIUrl}/smtp/email');
+    final emailAPIKey = remoteConfig.getString('email_api_key');
 
     final response = await http.post(
       emailAPIUrl,
@@ -23,17 +24,12 @@ class EmailService {
         'api-key': emailAPIKey,
       },
       body: jsonEncode({
-        'sender': {
-          'email': fromEmail,
-        },
+        'sender': {'email': fromEmail},
         'to': [
-          {
-            'email': AppStrings.emailToMail,
-            'name': AppStrings.emailToName,
-          },
+          {'email': AppStrings.emailToMail, 'name': AppStrings.emailToName},
         ],
-        'subject': subject,
         'htmlContent': content,
+        'subject': subject,
       }),
     );
 

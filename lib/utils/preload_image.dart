@@ -15,21 +15,26 @@ Future<void> preloadImage(ImageProvider provider) {
   final stream = provider.resolve(config);
 
   late final ImageStreamListener listener;
-  listener = ImageStreamListener((image, _) {
-    debugPrint('Image ${image.debugLabel} preloaded');
-    completer.complete();
-    stream.removeListener(listener);
-  }, onError: (exception, stackTrace) {
-    completer.complete();
-    stream.removeListener(listener);
-    FlutterError.reportError(FlutterErrorDetails(
-      context: ErrorDescription('image failed to load'),
-      library: 'image resource service',
-      exception: exception,
-      stack: stackTrace,
-      silent: true,
-    ));
-  });
+  listener = ImageStreamListener(
+    (image, _) {
+      debugPrint('Image ${image.debugLabel} preloaded');
+      completer.complete();
+      stream.removeListener(listener);
+    },
+    onError: (exception, stackTrace) {
+      completer.complete();
+      stream.removeListener(listener);
+      FlutterError.reportError(
+        FlutterErrorDetails(
+          context: ErrorDescription('image failed to load'),
+          library: 'image resource service',
+          exception: exception,
+          stack: stackTrace,
+          silent: true,
+        ),
+      );
+    },
+  );
 
   stream.addListener(listener);
   return completer.future;

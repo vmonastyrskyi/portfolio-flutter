@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/components/theme/app_colors.dart';
 
 class CustomTextInput extends StatefulWidget {
   const CustomTextInput({
@@ -8,7 +8,7 @@ class CustomTextInput extends StatefulWidget {
     this.validator,
     this.keyboardType = TextInputType.text,
     this.textAlign = TextAlign.start,
-    this.hintText,
+    this.labelText,
     this.minLines,
     this.maxLines,
   });
@@ -17,7 +17,7 @@ class CustomTextInput extends StatefulWidget {
   final FormFieldValidator<String?>? validator;
   final TextInputType keyboardType;
   final TextAlign textAlign;
-  final String? hintText;
+  final String? labelText;
   final int? minLines;
   final int? maxLines;
 
@@ -44,30 +44,34 @@ class _CustomTextInputState extends State<CustomTextInput> {
       maxLines: widget.maxLines,
       textAlign: widget.textAlign,
       keyboardType: widget.keyboardType,
-      cursorColor: AppColors.secondary,
+      cursorColor: context.appColors.primaryColor,
       cursorWidth: 2,
-      style: const TextStyle(
-        height: 1.5,
-        fontSize: 14.0,
+      style: TextStyle(
+        color: context.appColors.primaryTextColor,
+        fontWeight: FontWeight.w500,
         fontFamily: 'Poppins',
-        fontWeight: FontWeight.w600,
-        color: AppColors.secondary,
+        fontSize: 14.0,
+        height: 1.5,
       ),
       decoration: InputDecoration(
-        isDense: true,
-        hintText: widget.hintText,
-        hintStyle: const TextStyle(
-          height: 1.75,
+        labelText: widget.labelText,
+        labelStyle: TextStyle(
+          color: context.appColors.primaryTextColor,
+          fontWeight: FontWeight.w500,
+          fontFamily: 'Poppins',
           fontSize: 14.0,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w600,
-          color: Color.fromRGBO(117, 117, 117, 1.0),
         ),
-        errorStyle: const TextStyle(
-          fontSize: 12.0,
+        floatingLabelStyle: TextStyle(
+          color: context.appColors.primaryColor,
+          fontWeight: FontWeight.w500,
           fontFamily: 'Poppins',
-          fontWeight: FontWeight.w600,
-          color: AppColors.error,
+          fontSize: 16.0,
+        ),
+        errorStyle: TextStyle(
+          color: context.appColors.errorColor,
+          fontWeight: FontWeight.w500,
+          fontFamily: 'Poppins',
+          fontSize: 14.0,
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16.0,
@@ -75,36 +79,36 @@ class _CustomTextInputState extends State<CustomTextInput> {
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(
-            color: AppColors.secondary,
+          borderSide: BorderSide(
+            color: context.appColors.primaryTextColor,
             width: 2.0,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(
-            color: AppColors.secondary,
+          borderSide: BorderSide(
+            color: context.appColors.primaryTextColor,
             width: 2.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(
-            color: AppColors.secondary,
+          borderSide: BorderSide(
+            color: context.appColors.primaryColor,
             width: 2.0,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(
-            color: AppColors.error,
+          borderSide: BorderSide(
+            color: context.appColors.errorColor,
             width: 2.0,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(
-            color: AppColors.error,
+          borderSide: BorderSide(
+            color: context.appColors.errorColor,
             width: 2.0,
           ),
         ),

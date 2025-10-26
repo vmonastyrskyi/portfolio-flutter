@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:portfolio/components/shared_widgets/custom_button.dart';
 import 'package:portfolio/components/shared_widgets/custom_text_input.dart';
-import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/components/theme/app_colors.dart';
 import 'package:portfolio/utils/app_strings.dart';
 import 'package:portfolio/utils/email_sender.dart';
 
@@ -19,7 +18,8 @@ class ContactForm extends StatelessWidget {
     return Form(
       key: _contactFormKey,
       child: Column(
-        children: [
+        spacing: 24.0,
+        children: <Widget>[
           CustomTextInput(
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
@@ -36,9 +36,8 @@ class ContactForm extends StatelessWidget {
 
               return null;
             },
-            hintText: 'Email',
+            labelText: 'Email',
           ),
-          const SizedBox(height: 32.0),
           CustomTextInput(
             controller: _subjectController,
             validator: (value) {
@@ -48,9 +47,8 @@ class ContactForm extends StatelessWidget {
 
               return null;
             },
-            hintText: 'Subject',
+            labelText: 'Subject',
           ),
-          const SizedBox(height: 32.0),
           CustomTextInput(
             controller: _contentController,
             validator: (value) {
@@ -61,13 +59,12 @@ class ContactForm extends StatelessWidget {
               return null;
             },
             keyboardType: TextInputType.multiline,
-            hintText: 'Content',
+            labelText: 'Content',
             minLines: 5,
           ),
-          const SizedBox(height: 32.0),
           Align(
             alignment: Alignment.centerRight,
-            child: CustomButton(
+            child: FilledButton(
               onPressed: () async {
                 FocusManager.instance.primaryFocus?.unfocus();
 
@@ -95,19 +92,32 @@ class ContactForm extends StatelessWidget {
                     ? AppStrings.sendEmailSuccess
                     : AppStrings.sendEmailFailure;
 
-
                 Fluttertoast.showToast(
                   msg: toastMessage,
                   gravity: ToastGravity.BOTTOM,
                   webBgColor: '#0D1730',
-                  textColor: AppColors.white,
+                  textColor: Colors.white,
                   timeInSecForIosWeb: 3,
                   webPosition: 'center',
                 );
               },
-              width: 128.0,
-              height: 48.0,
-              text: 'Send',
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(
+                  context.appColors.primaryColor,
+                ),
+                foregroundColor: WidgetStatePropertyAll(
+                  context.appColors.primaryTextColor,
+                ),
+                fixedSize: const WidgetStatePropertyAll(Size(124.0, 48.0)),
+              ),
+              child: const Text(
+                'Send',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Poppins',
+                  fontSize: 16.0,
+                ),
+              ),
             ),
           ),
         ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/shared_widgets/section_title.dart';
 
-import 'widgets/work_grid_view.dart';
+import 'widgets/projects_grid_view.dart';
 
-class WorkSection extends StatelessWidget {
-  const WorkSection({super.key});
+class ProjectsSection extends StatelessWidget {
+  const ProjectsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +13,12 @@ class WorkSection extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1024.0),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              SectionTitleText(title: 'Work'),
+            children: <Widget>[
+              SectionTitleText(title: 'My Projects'),
               SizedBox(height: 64.0),
-              WorksGridView(),
+              ProjectGridView(),
             ],
           ),
         ),
